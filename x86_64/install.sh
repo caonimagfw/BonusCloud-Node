@@ -500,14 +500,14 @@ _lvm_ins(){
 }
 _k8s_ins_yum(){
 	printf "
-	[kubernetes]
-	name=Kubernetes
-	baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-$(uname -m)/
-	enabled=1
-	gpgcheck=1
-	repo_gpgcheck=1
-	gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
-	"|sed 's/    //g'> /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-$(uname -m)/
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+"|sed 's/    //g'> /etc/yum.repos.d/kubernetes.repo
 	setenforce 0
 	yum install  -y kubelet-1.12.3 kubeadm-1.12.3 kubectl-1.12.3 kubernetes-cni-0.6.0
 	yum --exclude kubelet kubeadm kubernetes-cni
